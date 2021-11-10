@@ -1,0 +1,12 @@
+.login-img {
+  animation-name: image-bounce;
+  animation: image-bounce 2s infinite alternate;
+}
+@keyframes image-bounce {
+  from {
+    transform: translateY(-20px);
+  }
+  to {
+    transform: translateY(20px);
+  }
+}
