@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Grid, Container, Typography, Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import "./HomeBanner.css";
+import { Link } from "react-router-dom";
 
 const HomeBanner = () => {
     const SecondaryButton = styled(Button)(({ theme }) => ({
@@ -30,7 +31,15 @@ const HomeBanner = () => {
                             variant="contained"
                             sx={{ color: "#fff", mt: 3, borderRadius: 0 }}
                         >
-                            View All Drones
+                            <Link
+                                to="/all-products"
+                                style={{
+                                    textDecoration: "none",
+                                    color: "#fff",
+                                }}
+                            >
+                                View all drones
+                            </Link>
                         </SecondaryButton>
                     </Box>
                 </Grid>

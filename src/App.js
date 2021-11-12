@@ -2,9 +2,14 @@ import "./App.css";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import NotFound from "./Pages/NotFound/NotFound";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material";
 import SignUp from "./Pages/SignUp/SignUp";
+import AuthProvider from "./Context/AuthProvider";
+import AllProducts from "./Pages/AllProducts/AllProducts";
+import PrivateRoute from "./Pages/Login/PrivateRoute/PrivateRoute";
+import AddNewProduct from "./Pages/AddNewProduct/AddNewProduct";
+import PurchaseProduct from "./Pages/PurchaseProduct/PurchaseProduct";
 function App() {
     const theme = createTheme({
         palette: {
@@ -27,6 +32,7 @@ function App() {
     });
     theme.typography.h3 = {
         fontSize: "1.2rem",
+        fontFamily: "Maven Pro",
         "@media (min-width:600px)": {
             fontSize: "1.5rem",
         },
@@ -34,19 +40,51 @@ function App() {
             fontSize: "2.4rem",
         },
     };
+    theme.typography.h2 = {
+        fontSize: "1.5rem",
+        fontFamily: "Maven Pro",
+        fontWeight: 500,
+        "@media (min-width:600px)": {
+            fontSize: "1.8rem",
+        },
+        [theme.breakpoints.up("md")]: {
+            fontSize: "2.5rem",
+        },
+    };
 
     return (
         <div className="App">
             <ThemeProvider theme={theme}>
-                <Router>
-                    <Routes>
-                        <Route exact path="/" element={<Home />}></Route>
-                        <Route path="/login" element={<Login />}></Route>
-                        <Route path="/signup" element={<SignUp />}></Route>
+                <AuthProvider>
+                    <Router>
+                        <Switch>
+                            <Route exact path="/">
+                                <Home></Home>
+                            </Route>
+                            <Route path="/login">
+                                <Login></Login>
+                            </Route>
+                            <Route path="/signup">
+                                <SignUp></SignUp>
+                            </Route>
+                            <Route path="/add-new-product">
+                                <AddNewProduct />
+                            </Route>
 
-                        <Route path="*" element={<NotFound></NotFound>}></Route>
-                    </Routes>
-                </Router>
+                            <Route path="/all-products">
+                                <AllProducts />
+                            </Route>
+                            <PrivateRoute path="/purchase-product/:id">
+                                <PurchaseProduct />
+                            </PrivateRoute>
+
+                            <Route
+                                path="*"
+                                element={<NotFound></NotFound>}
+                            ></Route>
+                        </Switch>
+                    </Router>
+                </AuthProvider>
             </ThemeProvider>
         </div>
     );

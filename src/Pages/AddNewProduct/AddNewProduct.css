@@ -1,0 +1,7 @@
+.add-new-product form input,
+select,
+textarea {
+    margin: 8px 0;
+    padding: 16px 5px;
+    font-size: 1.2rem;
+}

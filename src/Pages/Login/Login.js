@@ -9,10 +9,17 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import login from "../../images/login.svg";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./Login.css";
+import useAuth from "../../hooks/useAuth";
+import Header from "../../Shared/Header/Header";
+import { useHistory } from "react-router";
+
 const Login = () => {
     const [loginData, setLoginData] = useState({});
+    const { signInUsingGoogle, signInWithEmail } = useAuth();
+    const history = useHistory();
+    const location = useLocation();
     const handleInput = (e) => {
         const field = e.target.name;
         const value = e.target.value;
@@ -21,8 +28,19 @@ const Login = () => {
         setLoginData(newLoginData);
     };
     const handleSubmit = (e) => {
-        console.log(loginData);
         e.preventDefault();
+        console.log(loginData);
+        signInWithEmail(loginData.email, loginData.password, history, location);
+    };
+
+    const handleGoogleLogin = () => {
+        signInUsingGoogle().then((result) => {
+            if (location?.state?.from) {
+                history.replace(location.state.from);
+            } else {
+                history.replace("/");
+            }
+        });
     };
 
     const SecondaryButton = styled(Button)(({ theme }) => ({
@@ -32,9 +50,12 @@ const Login = () => {
             backgroundColor: "#3146aa",
         },
     }));
+
+    // RETURN//
     return (
-        <Container sx={{ mt: 5 }}>
-            <Grid container spacing={2}>
+        <Container sx={{ mt: 12 }}>
+            <Header />
+            <Grid container spacing={2} sx={{ mt: 5 }}>
                 <Grid
                     item
                     xs={12}
@@ -114,7 +135,7 @@ const Login = () => {
                                 color: "#fff",
                                 fontFamily: "Cairo",
                             }}
-                            type="submit"
+                            onClick={handleGoogleLogin}
                         >
                             Login with Google
                         </SecondaryButton>
