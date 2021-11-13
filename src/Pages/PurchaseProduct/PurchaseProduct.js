@@ -23,10 +23,10 @@ const PurchaseProduct = () => {
     const { register, handleSubmit, reset } = useForm();
     const [open, setOpen] = React.useState(false);
     useEffect(() => {
-        fetch(`http://localhost:5000/products/${id}`)
+        fetch(`https://nameless-lowlands-17762.herokuapp.com/products/${id}`)
             .then((res) => res.json())
             .then((data) => setProduct(data));
-    }, []);
+    }, [id]);
 
     //
 
@@ -42,7 +42,7 @@ const PurchaseProduct = () => {
 
     const onSubmit = (data) => {
         const newData = { ...data, status: "pending" };
-        fetch("http://localhost:5000/orders", {
+        fetch("https://nameless-lowlands-17762.herokuapp.com/orders", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

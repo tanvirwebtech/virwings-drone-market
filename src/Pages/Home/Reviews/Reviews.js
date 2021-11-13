@@ -1,11 +1,11 @@
-import { Container, Box, Typography, Divider } from "@mui/material";
+import { Container, Typography, Divider } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import SingleReview from "../SingleReview/SingleReview";
 const Reviews = () => {
     const [reviews, setReviews] = useState([]);
     useEffect(() => {
-        fetch("http://localhost:5000/reviews")
+        fetch("https://nameless-lowlands-17762.herokuapp.com/reviews")
             .then((res) => res.json())
             .then((data) => setReviews(data));
     }, []);

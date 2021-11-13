@@ -78,7 +78,7 @@ const useFirebase = () => {
     // Save user to DB
     const saveUser = (displayName, email, method) => {
         const user = { displayName, email };
-        fetch("http://localhost:5000/users", {
+        fetch("https://nameless-lowlands-17762.herokuapp.com/users", {
             method: method,
             headers: {
                 "content-type": "application/json",
@@ -91,7 +91,9 @@ const useFirebase = () => {
 
     // Check Admin
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${user.email}`)
+        fetch(
+            `https://nameless-lowlands-17762.herokuapp.com/users/${user.email}`
+        )
             .then((res) => res.json())
             .then((data) => setAdmin(data.admin));
     }, [user.email]);
@@ -115,7 +117,7 @@ const useFirebase = () => {
             setIsLoading(false);
         });
         return () => unsubscribed;
-    }, []);
+    }, [auth]);
 
     return {
         user,

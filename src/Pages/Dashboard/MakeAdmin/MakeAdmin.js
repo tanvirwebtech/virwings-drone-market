@@ -4,13 +4,13 @@ import { Typography, Box, Button } from "@mui/material";
 const MakeAdmin = () => {
     const [users, setUsers] = useState([]);
     useEffect(() => {
-        fetch("http://localhost:5000/users")
+        fetch("https://nameless-lowlands-17762.herokuapp.com/users")
             .then((res) => res.json())
             .then((data) => setUsers(data));
     }, []);
     const handleMakeAdmin = (email) => {
         const user = { email };
-        fetch("http://localhost:5000/users/admin", {
+        fetch("https://nameless-lowlands-17762.herokuapp.com/users/admin", {
             method: "PUT",
             headers: {
                 "content-type": "application/json",

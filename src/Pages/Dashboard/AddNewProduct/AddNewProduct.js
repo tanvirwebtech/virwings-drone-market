@@ -14,7 +14,7 @@ const AddNewProduct = () => {
     const { register, handleSubmit, reset } = useForm();
     const [open, setOpen] = React.useState(false);
     const onSubmit = (data) => {
-        fetch("http://localhost:5000/add-product", {
+        fetch("https://nameless-lowlands-17762.herokuapp.com/add-product", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

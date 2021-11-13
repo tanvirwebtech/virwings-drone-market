@@ -57,9 +57,12 @@ const MyOrders = () => {
         setOpen(false);
     };
     const handleConfirm = () => {
-        fetch(`http://localhost:5000/orders/${targetId}`, {
-            method: "DELETE",
-        })
+        fetch(
+            `https://nameless-lowlands-17762.herokuapp.com/orders/${targetId}`,
+            {
+                method: "DELETE",
+            }
+        )
             .then((res) => res.json())
             .then((data) => {
                 const rest = orders.filter((order) => order._id !== targetId);
@@ -70,10 +73,12 @@ const MyOrders = () => {
     };
 
     React.useEffect(() => {
-        fetch(`http://localhost:5000/orders/${user.email}`)
+        fetch(
+            `https://nameless-lowlands-17762.herokuapp.com/orders/${user.email}`
+        )
             .then((res) => res.json())
             .then((data) => setOrders(data));
-    }, []);
+    }, [user.email]);
     const handleDelete = (id) => {
         handleClickOpen();
         setTargetId(id);

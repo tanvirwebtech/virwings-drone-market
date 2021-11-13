@@ -6,7 +6,6 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import useAuth from "../../../hooks/useAuth";
 import { Button } from "@mui/material";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -46,7 +45,6 @@ const columns = [
 
 const ManageAllOrders = () => {
     const [orders, setOrders] = React.useState([]);
-    const { user } = useAuth();
     const [open, setOpen] = React.useState(false);
     const [targetId, setTargetId] = React.useState("");
 
@@ -58,9 +56,12 @@ const ManageAllOrders = () => {
         setOpen(false);
     };
     const handleConfirm = () => {
-        fetch(`http://localhost:5000/orders/${targetId}`, {
-            method: "DELETE",
-        })
+        fetch(
+            `https://nameless-lowlands-17762.herokuapp.com/orders/${targetId}`,
+            {
+                method: "DELETE",
+            }
+        )
             .then((res) => res.json())
             .then((data) => {
                 const rest = orders.filter((order) => order._id !== targetId);
@@ -71,7 +72,7 @@ const ManageAllOrders = () => {
     };
 
     React.useEffect(() => {
-        fetch(`http://localhost:5000/orders`)
+        fetch(`https://nameless-lowlands-17762.herokuapp.com/orders`)
             .then((res) => res.json())
             .then((data) => setOrders(data));
     }, []);

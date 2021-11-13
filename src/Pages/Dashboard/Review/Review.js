@@ -22,18 +22,20 @@ const Review = () => {
     };
 
     React.useEffect(() => {
-        fetch(`http://localhost:5000/orders/${user.email}`)
+        fetch(
+            `https://nameless-lowlands-17762.herokuapp.com/orders/${user.email}`
+        )
             .then((res) => res.json())
             .then((data) => setOrders(data));
-    }, []);
+    }, [user.email]);
     React.useEffect(() => {
-        fetch(`http://localhost:5000/all-products`)
+        fetch(`https://nameless-lowlands-17762.herokuapp.com/all-products`)
             .then((res) => res.json())
             .then((data) => setProduct(data));
     }, [orders]);
 
     const onSubmit = (data) => {
-        fetch("http://localhost:5000/reviews", {
+        fetch("https://nameless-lowlands-17762.herokuapp.com/reviews", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

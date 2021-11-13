@@ -4,7 +4,7 @@ const ManageProducts = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/all-products")
+        fetch("https://nameless-lowlands-17762.herokuapp.com/all-products")
             .then((res) => res.json())
             .then((data) => setProducts(data));
     }, []);
@@ -12,9 +12,12 @@ const ManageProducts = () => {
         const confirm = window.confirm("are you sure?");
         console.log(product);
         if (confirm) {
-            fetch(`http://localhost:5000/products/${product._id}`, {
-                method: "DELETE",
-            })
+            fetch(
+                `https://nameless-lowlands-17762.herokuapp.com/products/${product._id}`,
+                {
+                    method: "DELETE",
+                }
+            )
                 .then((res) => res.json())
                 .then((data) => {
                     const rest = products.filter(
