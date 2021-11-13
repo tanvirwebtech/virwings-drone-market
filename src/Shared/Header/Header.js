@@ -15,6 +15,7 @@ import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
+
 const Header = () => {
     const theme = useTheme();
     //drawer state
@@ -59,6 +60,13 @@ const Header = () => {
                     <ListItemText>
                         <Link className={navLink} to="/">
                             Home
+                        </Link>{" "}
+                    </ListItemText>
+                </ListItem>
+                <ListItem button>
+                    <ListItemText>
+                        <Link className={navLink} to="/all-products">
+                            All Drones
                         </Link>{" "}
                     </ListItemText>
                 </ListItem>
@@ -119,10 +127,17 @@ const Header = () => {
                                 <Link className={navLink} to="/">
                                     Home
                                 </Link>
-                                <Link className={navLink} to="/">
-                                    {" "}
-                                    Dashboard
+                                <Link className={navLink} to="/all-products">
+                                    All Drones
                                 </Link>
+                                {user.email ? (
+                                    <Link className={navLink} to="/dashboard">
+                                        {" "}
+                                        Dashboard
+                                    </Link>
+                                ) : (
+                                    ""
+                                )}
                                 {user.email ? (
                                     <Button
                                         onClick={handleLogOut}

@@ -1,8 +1,8 @@
-import { Category } from "@mui/icons-material";
 import { Container, Divider, Grid, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import SingleProduct from "../../Shared/SingleProduct/SingleProduct";
 import Header from "../../Shared/Header/Header";
+import Footer from "../../Shared/Footer/Footer";
 const AllProducts = () => {
     const [allProducts, setAllProducts] = useState([]);
     useEffect(() => {
@@ -26,7 +26,7 @@ const AllProducts = () => {
     return (
         <>
             <Header></Header>
-            <div style={{ backgroundColor: "#00000050" }}>
+            <div>
                 <Container sx={{ pb: 4, pt: 20 }}>
                     <Typography variant="h2" sx={{ py: 2 }}>
                         All Your desired product is here
@@ -81,6 +81,7 @@ const AllProducts = () => {
                     </Grid>
                 </Container>
             </div>
+            <Footer />
         </>
     );
 };

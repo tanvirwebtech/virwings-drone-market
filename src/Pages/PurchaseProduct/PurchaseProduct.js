@@ -14,6 +14,8 @@ import Header from "../../Shared/Header/Header";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import "./PurchaseProduct.css";
+import Footer from "../../Shared/Footer/Footer";
+
 const PurchaseProduct = () => {
     const { user } = useAuth();
     const [product, setProduct] = useState({});
@@ -39,16 +41,14 @@ const PurchaseProduct = () => {
     //
 
     const onSubmit = (data) => {
+        const newData = { ...data, status: "pending" };
         fetch("http://localhost:5000/orders", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
             },
-            body: JSON.stringify(data),
-        }).then((res) => {
-            console.log(res);
-        });
-        console.log(data);
+            body: JSON.stringify(newData),
+        }).then((res) => {});
         setOpen(true);
         reset();
     };
@@ -119,7 +119,7 @@ const PurchaseProduct = () => {
                                     />
                                     <label htmlFor="email">Email</label>
                                     <input
-                                        {...register("company")}
+                                        {...register("email")}
                                         type="email"
                                         id="email"
                                         required
@@ -182,6 +182,7 @@ const PurchaseProduct = () => {
                     </Alert>
                 </Snackbar>
             </Container>
+            <Footer></Footer>
         </>
     );
 };

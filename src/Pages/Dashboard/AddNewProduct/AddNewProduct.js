@@ -1,3 +1,4 @@
+import React from "react";
 import {
     Alert,
     Button,
@@ -7,7 +8,6 @@ import {
     Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
 import { useForm } from "react-hook-form";
 import "./AddNewProduct.css";
 const AddNewProduct = () => {

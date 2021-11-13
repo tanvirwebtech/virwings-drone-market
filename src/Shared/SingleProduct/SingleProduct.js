@@ -66,8 +66,8 @@ const SingleProduct = ({ product }) => {
                 <CardActions className={flexCenter}>
                     <Link to={`/purchase-product/${_id}`} className={link}>
                         <Button
-                            sx={{ mx: "auto", px: 3, border: 1 }}
-                            color="secondary"
+                            sx={{ mx: "auto", px: 3, color: "#fff" }}
+                            variant="contained"
                         >
                             Buy Now
                         </Button>

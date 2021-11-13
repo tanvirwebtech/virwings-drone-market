@@ -8,8 +8,8 @@ import SignUp from "./Pages/SignUp/SignUp";
 import AuthProvider from "./Context/AuthProvider";
 import AllProducts from "./Pages/AllProducts/AllProducts";
 import PrivateRoute from "./Pages/Login/PrivateRoute/PrivateRoute";
-import AddNewProduct from "./Pages/AddNewProduct/AddNewProduct";
 import PurchaseProduct from "./Pages/PurchaseProduct/PurchaseProduct";
+import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
 function App() {
     const theme = createTheme({
         palette: {
@@ -67,15 +67,15 @@ function App() {
                             <Route path="/signup">
                                 <SignUp></SignUp>
                             </Route>
-                            <Route path="/add-new-product">
-                                <AddNewProduct />
-                            </Route>
 
                             <Route path="/all-products">
                                 <AllProducts />
                             </Route>
                             <PrivateRoute path="/purchase-product/:id">
                                 <PurchaseProduct />
+                            </PrivateRoute>
+                            <PrivateRoute path="/dashboard">
+                                <Dashboard />
                             </PrivateRoute>
 
                             <Route

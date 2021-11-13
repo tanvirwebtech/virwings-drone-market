@@ -13,7 +13,7 @@ const HomeBanner = () => {
         },
     }));
     return (
-        <Container>
+        <Container sx={{ pt: 6 }}>
             <Grid container spacing={2}>
                 <Grid item xs={12} md={6} sm={6}>
                     <Box sx={{ py: 10, mt: 10 }}>
