@@ -1,12 +1,12 @@
 import React from "react";
-import CircularProgress from "@mui/material/CircularProgress";
+import { CircularProgress } from "@mui/material";
 
 import { Route, Redirect } from "react-router";
 import useAuth from "../../../hooks/useAuth";
 
 const AdminRoute = ({ children, ...rest }) => {
     const { isLoading, admin } = useAuth();
-    if (isLoading) {
+    if (isLoading && !admin) {
         return <CircularProgress />;
     }
     return (

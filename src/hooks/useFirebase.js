@@ -91,11 +91,15 @@ const useFirebase = () => {
 
     // Check Admin
     useEffect(() => {
+        setIsLoading(true);
         fetch(
             `https://nameless-lowlands-17762.herokuapp.com/users/${user.email}`
         )
             .then((res) => res.json())
-            .then((data) => setAdmin(data.admin));
+            .then((data) => {
+                setAdmin(data.admin);
+                setIsLoading(false);
+            });
     }, [user.email]);
 
     // Log out
@@ -108,7 +112,7 @@ const useFirebase = () => {
 
     // Observer Function
     useEffect(() => {
-        const unsubscribed = onAuthStateChanged(auth, (user) => {
+        onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user);
             } else {
@@ -116,8 +120,7 @@ const useFirebase = () => {
             }
             setIsLoading(false);
         });
-        return () => unsubscribed;
-    }, [auth]);
+    }, []);
 
     return {
         user,

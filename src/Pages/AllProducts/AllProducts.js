@@ -1,4 +1,10 @@
-import { Container, Divider, Grid, Typography } from "@mui/material";
+import {
+    CircularProgress,
+    Container,
+    Divider,
+    Grid,
+    Typography,
+} from "@mui/material";
 import React, { useEffect, useState } from "react";
 import SingleProduct from "../../Shared/SingleProduct/SingleProduct";
 import Header from "../../Shared/Header/Header";
@@ -35,50 +41,69 @@ const AllProducts = () => {
                         All Drones
                     </Typography>
                     <Divider sx={{ mt: 1 }} />
-                    <Grid container spacing={3} sx={{ mt: 1 }}>
-                        {allProducts.map((product) => (
-                            <SingleProduct
-                                key={product._id}
-                                product={product}
-                            />
-                        ))}
-                    </Grid>
+                    {allProducts.length > 0 ? (
+                        <Grid container spacing={3} sx={{ mt: 1 }}>
+                            {allProducts.map((product) => (
+                                <SingleProduct
+                                    key={product._id}
+                                    product={product}
+                                />
+                            ))}
+                        </Grid>
+                    ) : (
+                        <CircularProgress />
+                    )}
+
                     <Typography variant="h6" sx={{ textAlign: "left", mt: 4 }}>
                         Category/Cinematic
                     </Typography>
                     <Divider sx={{ mt: 1 }} />
-                    <Grid container spacing={3} sx={{ mt: 1 }}>
-                        {cinematicDrones.map((product) => (
-                            <SingleProduct
-                                key={product._id}
-                                product={product}
-                            />
-                        ))}
-                    </Grid>
+                    {allProducts.length > 0 ? (
+                        <Grid container spacing={3} sx={{ mt: 1 }}>
+                            {cinematicDrones.map((product) => (
+                                <SingleProduct
+                                    key={product._id}
+                                    product={product}
+                                />
+                            ))}
+                        </Grid>
+                    ) : (
+                        <CircularProgress />
+                    )}
+
                     <Typography variant="h6" sx={{ textAlign: "left", mt: 4 }}>
                         Category/Professional
                     </Typography>
                     <Divider sx={{ mt: 1 }} />
-                    <Grid container spacing={3} sx={{ mt: 1 }}>
-                        {professionalDrones.map((product) => (
-                            <SingleProduct
-                                key={product._id}
-                                product={product}
-                            />
-                        ))}
-                    </Grid>
+                    {allProducts.length > 0 ? (
+                        <Grid container spacing={3} sx={{ mt: 1 }}>
+                            {professionalDrones.map((product) => (
+                                <SingleProduct
+                                    key={product._id}
+                                    product={product}
+                                />
+                            ))}
+                        </Grid>
+                    ) : (
+                        <CircularProgress />
+                    )}
+
                     <Typography variant="h6" sx={{ textAlign: "left", mt: 4 }}>
                         Category/Surviellence
                     </Typography>
                     <Divider sx={{ mt: 1 }} />
-                    <Grid container spacing={3} sx={{ mt: 1 }}>
-                        {surveillenceDrones.map((product) => (
-                            <SingleProduct
-                                key={product._id}
-                                product={product}
-                            />
-                        ))}
-                    </Grid>
+                    {allProducts.length > 0 ? (
+                        <Grid container spacing={3} sx={{ mt: 1 }}>
+                            {surveillenceDrones.map((product) => (
+                                <SingleProduct
+                                    key={product._id}
+                                    product={product}
+                                />
+                            ))}
+                        </Grid>
+                    ) : (
+                        <CircularProgress />
+                    )}
                 </Container>
             </div>
             <Footer />

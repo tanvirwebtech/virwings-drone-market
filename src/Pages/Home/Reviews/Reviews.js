@@ -19,7 +19,6 @@ const Reviews = () => {
     };
     const settings = {
         dots: false,
-        infinite: true,
         arrows: false,
         autoplay: true,
         autoplaySpeed: 3000,
@@ -33,7 +32,7 @@ const Reviews = () => {
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 1,
-                    infinite: true,
+                    // infinite: true,
                     dots: true,
                 },
             },

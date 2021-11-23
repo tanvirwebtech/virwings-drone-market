@@ -1,4 +1,4 @@
-import { Container, Grid, Typography } from "@mui/material";
+import { CircularProgress, Container, Grid, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Footer from "../../Shared/Footer/Footer";
 import Header from "../../Shared/Header/Header";
@@ -21,21 +21,25 @@ const Home = () => {
             <div>
                 <Header />
                 <HomeBanner />
-                <div style={{ backgroundColor: "#00000050" }}>
-                    <Container sx={{ py: 4 }}>
-                        <Typography variant="h2" sx={{ py: 2 }}>
-                            Our Best Performing Products
-                        </Typography>
-                        <Grid container spacing={3} sx={{ mt: 1 }}>
-                            {slicedProducts.map((product) => (
-                                <SingleProduct
-                                    key={product._id}
-                                    product={product}
-                                />
-                            ))}
-                        </Grid>
-                    </Container>
-                </div>
+                {allProducts.length > 0 ? (
+                    <div style={{ backgroundColor: "#00000050" }}>
+                        <Container sx={{ py: 4 }}>
+                            <Typography variant="h2" sx={{ py: 2 }}>
+                                Our Best Performing Products
+                            </Typography>
+                            <Grid container spacing={3} sx={{ mt: 1 }}>
+                                {slicedProducts.map((product) => (
+                                    <SingleProduct
+                                        key={product._id}
+                                        product={product}
+                                    />
+                                ))}
+                            </Grid>
+                        </Container>
+                    </div>
+                ) : (
+                    <CircularProgress />
+                )}
                 <Reviews />
             </div>
             <Footer />

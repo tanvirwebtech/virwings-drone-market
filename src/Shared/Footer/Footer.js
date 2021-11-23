@@ -89,7 +89,7 @@ const Footer = () => {
                             Subscribe to our newsletter
                         </Typography>
                         <Box sx={{ mt: 3 }}>
-                            <form onSubmit="" style={{ display: "flex" }}>
+                            <form style={{ display: "flex" }}>
                                 <input type="email" />
                                 <Button
                                     variant="contained"

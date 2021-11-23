@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Typography, Box, Button } from "@mui/material";
+import { Typography, Box, Button, Alert } from "@mui/material";
 
 const MakeAdmin = () => {
     const [users, setUsers] = useState([]);
+    const [success, setSuccess] = useState(false);
     useEffect(() => {
         fetch("https://nameless-lowlands-17762.herokuapp.com/users")
             .then((res) => res.json())
@@ -18,7 +19,15 @@ const MakeAdmin = () => {
             body: JSON.stringify(user),
         })
             .then((res) => res.json())
-            .then((data) => console.log(data));
+            .then((data) => {
+                if (data.modifiedCount) {
+                    setSuccess(true);
+                    successReset();
+                }
+            });
+    };
+    const successReset = () => {
+        setTimeout(() => setSuccess(false), 5000);
     };
     return (
         <div>
@@ -62,6 +71,11 @@ const MakeAdmin = () => {
                         </Box>
                     </Box>
                 ))}
+                {success ? (
+                    <Alert severity="success">Admin Added SuccessfUlly</Alert>
+                ) : (
+                    ""
+                )}
             </Box>
         </div>
     );
