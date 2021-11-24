@@ -4,10 +4,9 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-
 import userIcon from "../../../images/user-icon.png";
+
 const SingleReview = ({ review }) => {
-    // console.log(review);
     return (
         <Box>
             <Card sx={{ maxWidth: 345, py: 3, borderRadius: 0, boxShadow: 0 }}>

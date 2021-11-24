@@ -42,7 +42,7 @@ const AddNewProduct = () => {
             <Grid container>
                 <Grid item xs={12} md={8} sm={10} sx={{ mx: "auto" }}>
                     <Box sx={{ p: 4, my: 3 }} className="add-new-product">
-                        <Typography variant="h2" sx={{ my: 2 }}>
+                        <Typography variant="h2" sx={{ mb: 2 }}>
                             Add a new Product
                         </Typography>
                         <form

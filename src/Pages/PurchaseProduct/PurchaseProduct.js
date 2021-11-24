@@ -8,6 +8,9 @@ import {
     Snackbar,
     Alert,
     Divider,
+    CircularProgress,
+    createTheme,
+    ThemeProvider,
 } from "@mui/material";
 import { useParams } from "react-router-dom";
 import Header from "../../Shared/Header/Header";
@@ -15,6 +18,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import "./PurchaseProduct.css";
 import Footer from "../../Shared/Footer/Footer";
+import { makeStyles } from "@mui/styles";
 
 const PurchaseProduct = () => {
     const { user } = useAuth();
@@ -39,7 +43,6 @@ const PurchaseProduct = () => {
     };
 
     //
-
     const onSubmit = (data) => {
         const newData = { ...data, status: "pending" };
         fetch("https://nameless-lowlands-17762.herokuapp.com/orders", {
@@ -52,6 +55,16 @@ const PurchaseProduct = () => {
         setOpen(true);
         reset();
     };
+    const theme = createTheme({
+        palette: {
+            primary: {
+                light: "#73f669",
+                main: "#4fd445",
+                dark: "#20661b",
+                contrastText: "#172774",
+            },
+        },
+    });
 
     return (
         <>
@@ -62,19 +75,39 @@ const PurchaseProduct = () => {
                 </Typography>
                 <Divider sx={{ my: 3 }} />
                 <Grid container spacing={3}>
-                    <Grid item md={6} sm={8} xs={12} sx={{ mx: "auto", mt: 5 }}>
-                        <Box sx={{ p: 3 }}>
-                            <img
-                                src={product.img}
-                                style={{ width: "100%" }}
-                                alt="product img"
-                            />
-                        </Box>
+                    <Grid item md={6} sm={8} xs={12} sx={{ mx: "auto", mt: 3 }}>
+                        {!product.img ? (
+                            <CircularProgress />
+                        ) : (
+                            <Box sx={{ p: 3 }}>
+                                <img
+                                    src={product.img}
+                                    style={{ width: "100%" }}
+                                    alt="product img"
+                                />
+                            </Box>
+                        )}
                         <Box>
-                            <Typography variant="h3">
-                                Product Name / Model:{product.modelName}
-                            </Typography>
-                            <Typography variant="h4">
+                            <Box>
+                                <Typography
+                                    sx={{ textAlign: "left" }}
+                                    variant="h4"
+                                >
+                                    Product Name / Model:{" "}
+                                    <span>{product.modelName}</span>
+                                </Typography>
+                            </Box>
+                            <Typography
+                                variant="h6"
+                                sx={{
+                                    mt: 3,
+                                    display: "inline-block",
+                                    backgroundColor: "mediumspringgreen",
+                                    py: "2px",
+                                    px: "0.5rem",
+                                    borderRadius: "0.4rem",
+                                }}
+                            >
                                 Price:${product.price} /
                                 <strike>{product.oldPrice}</strike>
                             </Typography>
@@ -157,6 +190,7 @@ const PurchaseProduct = () => {
                                     <Button
                                         type="submit"
                                         variant="contained"
+                                        color="secondary"
                                         sx={{ mt: 3, fontSize: "1.5rem" }}
                                     >
                                         Place Order

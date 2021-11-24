@@ -1,7 +1,6 @@
 import {
     Button,
     Card,
-    CardActionArea,
     CardActions,
     CardContent,
     CardMedia,
@@ -26,7 +25,7 @@ const SingleProduct = ({ product }) => {
     const { modelName, img, price, oldPrice, desc, _id } = product;
     const { link, flexCenter } = useStyle();
     return (
-        <Grid item md={4} sm={6} xs={12}>
+        <Grid item md={3} sm={6} xs={12}>
             <Card
                 sx={{
                     background: "#ffffff30",
@@ -37,7 +36,7 @@ const SingleProduct = ({ product }) => {
                     py: 2,
                 }}
             >
-                <CardActionArea sx={{}}>
+                <Box sx={{}}>
                     <Box sx={{ width: "100%", mx: "auto" }}>
                         <CardMedia
                             component="img"
@@ -51,18 +50,14 @@ const SingleProduct = ({ product }) => {
                         <Typography gutterBottom variant="h5">
                             {modelName}
                         </Typography>
-                        <Typography
-                            variant="body2"
-                            color="text.secondary"
-                            sx={{ fontSize: "1.2rem" }}
-                        >
+                        <Typography variant="body2" color="text.secondary">
                             {desc.slice(0, 80) + "..."}
                         </Typography>
                         <Typography variant="h6" color="text.secondary">
                             ${price} / <strike>{oldPrice}</strike>
                         </Typography>
                     </CardContent>
-                </CardActionArea>
+                </Box>
                 <CardActions className={flexCenter}>
                     <Link to={`/purchase-product/${_id}`} className={link}>
                         <Button
