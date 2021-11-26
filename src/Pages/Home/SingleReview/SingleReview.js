@@ -7,39 +7,48 @@ import Typography from "@mui/material/Typography";
 import userIcon from "../../../images/user-icon.png";
 
 const SingleReview = ({ review }) => {
-    return (
+  return (
+    <Box sx={{ display: "flex" }}>
+      <Card
+        sx={{
+          maxWidth: 345,
+          py: 3,
+          borderRadius: 0,
+          boxShadow: 0,
+          display: "flex",
+          width: "100%",
+        }}
+      >
         <Box>
-            <Card sx={{ maxWidth: 345, py: 3, borderRadius: 0, boxShadow: 0 }}>
-                <Box>
-                    <CardMedia
-                        sx={{ width: "100px", mx: "auto" }}
-                        component="img"
-                        image={userIcon}
-                        alt="user photo"
-                    />
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                            {review.name}
-                        </Typography>
-                        <Typography
-                            sx={{ fontSize: "1.1rem", py: 1 }}
-                            variant="body2"
-                            color="text.secondary"
-                        >
-                            {review.review}
-                        </Typography>
-                        <Typography
-                            sx={{ fontSize: "1.1rem", py: 1 }}
-                            variant="body2"
-                            color="text.secondary"
-                        >
-                            Rating: {review.rating} /5
-                        </Typography>
-                    </CardContent>
-                </Box>
-            </Card>
+          <CardMedia
+            sx={{ width: "100px", mx: "auto" }}
+            component="img"
+            image={userIcon}
+            alt="user photo"
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              {review.name}
+            </Typography>
+            <Typography
+              sx={{ fontSize: "1.1rem", py: 1 }}
+              variant="body2"
+              color="text.secondary"
+            >
+              {review.review}
+            </Typography>
+            <Typography
+              sx={{ fontSize: "1.1rem", py: 1 }}
+              variant="body2"
+              color="text.secondary"
+            >
+              Rating: {review.rating} /5
+            </Typography>
+          </CardContent>
         </Box>
-    );
+      </Card>
+    </Box>
+  );
 };
 
 export default SingleReview;

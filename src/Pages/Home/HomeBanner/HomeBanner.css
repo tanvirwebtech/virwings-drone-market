@@ -1,15 +1,18 @@
+.home-bg {
+  background-image: url("../../../images/home-banner-bg.jpg");
+  background-size: cover;
+}
 .drone {
-    animation-name: image-bounce;
-    animation: image-bounce 2s infinite alternate;
-    position: relative;
-    opacity: 0.6;
-    z-index: -1;
+  animation-name: image-bounce;
+  animation: image-bounce 2s infinite alternate;
+  position: relative;
+  opacity: 0.6;
 }
 @keyframes image-bounce {
-    from {
-        transform: translateY(-20px);
-    }
-    to {
-        transform: translateY(20px);
-    }
+  from {
+    transform: translateY(-20px);
+  }
+  to {
+    transform: translateY(20px);
+  }
 }
