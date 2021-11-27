@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Footer from "../../Shared/Footer/Footer";
 import Header from "../../Shared/Header/Header";
 import SingleProduct from "../../Shared/SingleProduct/SingleProduct";
+import Featured from "./Featured/Featured";
 import HomeBanner from "./HomeBanner/HomeBanner";
 import Reviews from "./Reviews/Reviews";
 
@@ -40,6 +41,7 @@ const Home = () => {
                 ) : (
                     <CircularProgress />
                 )}
+                <Featured />
                 <Reviews />
             </div>
             <Footer />
