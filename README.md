@@ -14,7 +14,7 @@ Application UI built with **Material UI**
 -   A visitor can create an account with email and password or directly can log in with a google account.
 -   After successfully logging in, a dashboard will be provided to a user / admin.
 
-    **`Dashboard`**
+# **`Dashboard`**
 
 # user's Dashboard
 
