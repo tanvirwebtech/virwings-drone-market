@@ -30,13 +30,3 @@ Application UI built with **Material UI**
 -   On _Manage Products_ routing an admin can see all products or virwings. Admin can delete or update a product.
 -   On _Make Admin_ routing an admin will see all users name and email. Admin can make a user to admin.
 
-# -----------------------------------------------------
-
-_Here's an admin account (use only for testing)_
-Email: `admin@admin.com`
-Password: `123456`
-_(If this doesn't work. Please contact me at below mentioned contact details)_
-
-## ------Contact------
-
-Email: `tanvirahmed9593@gmail.com`
